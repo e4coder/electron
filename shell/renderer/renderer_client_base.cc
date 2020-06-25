@@ -47,7 +47,7 @@
 
 #if defined(OS_WIN)
 #include <shlobj.h>
-#include "shell/browser/lib/shutdown_blocker_win.h"
+#include "shell/common/win/shutdown_blocker_win.h"
 #endif
 
 #if BUILDFLAG(ENABLE_BUILTIN_SPELLCHECKER)

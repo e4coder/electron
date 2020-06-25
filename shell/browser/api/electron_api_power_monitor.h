@@ -18,7 +18,7 @@
 #endif
 
 #if defined(OS_WIN)
-#include "shell/browser/lib/shutdown_blocker_win.h"
+#include "shell/common/win/shutdown_blocker_win.h"
 #endif
 
 namespace electron {

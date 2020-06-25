@@ -10,7 +10,7 @@
 #include "base/win/wrapped_window_proc.h"
 #include "content/public/browser/browser_task_traits.h"
 #include "content/public/browser/browser_thread.h"
-#include "shell/browser/lib/shutdown_blocker_win.h"
+#include "shell/common/win/shutdown_blocker_win.h"
 #include "ui/gfx/win/hwnd_util.h"
 
 namespace electron {
@@ -41,7 +41,7 @@ void ShutdownBlockerWin::BlockShutdown() {
   if (dedicated_message_loop_) {
     LOG(INFO) << "unblocking shutdown on renderer process";
     owner_thread_task_runner_ = base::ThreadTaskRunnerHandle::Get();
-    base::PostTask(FROM_HERE, {content::BrowserThread::UI},
+    base::PostTask(FROM_HERE, {content::BrowserThread::IO},
                    base::BindOnce(&ShutdownBlockerWin::MessageLoop,
                                   base::Unretained(this)));
   } else {

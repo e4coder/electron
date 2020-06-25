@@ -35,8 +35,8 @@
 // that child processes will always receive it first, so this class must also be
 // used in the browser process in which case it will deal with shutdown
 // by directly emitting the powerMonitor "shutdown" event.
-#ifndef SHELL_BROWSER_LIB_SHUTDOWN_BLOCKER_WIN_H_
-#define SHELL_BROWSER_LIB_SHUTDOWN_BLOCKER_WIN_H_
+#ifndef SHELL_COMMON_WIN_SHUTDOWN_BLOCKER_WIN_H_
+#define SHELL_COMMON_WIN_SHUTDOWN_BLOCKER_WIN_H_
 
 #include <windows.h>
 
@@ -80,4 +80,4 @@ class ShutdownBlockerWin {
 
 }  // namespace electron
 
-#endif  // SHELL_BROWSER_LIB_SHUTDOWN_BLOCKER_WIN_H_
+#endif  // SHELL_COMMON_WIN_SHUTDOWN_BLOCKER_WIN_H_
