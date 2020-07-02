@@ -105,15 +105,16 @@ void CocoaNotification::Show(const NotificationOptions& options) {
 }
 
 void CocoaNotification::Dismiss() {
-  if (notification_)
+  if (notification_) {
     [NSUserNotificationCenter.defaultUserNotificationCenter
         removeDeliveredNotification:notification_];
 
-  NotificationDismissed();
+    NotificationDismissed();
 
-  this->LogAction("dismissed");
+    this->LogAction("dismissed");
 
-  notification_.reset(nil);
+    notification_.reset(nil);
+  }
 }
 
 void CocoaNotification::NotificationDisplayed() {
@@ -165,8 +166,10 @@ void CocoaNotification::NotificationDismissed() {
 void CocoaNotification::LogAction(const char* action) {
   if (getenv("ELECTRON_DEBUG_NOTIFICATIONS")) {
     NSString* identifier = [notification_ valueForKey:@"identifier"];
-    LOG(INFO) << "Notification " << action << " (" << [identifier UTF8String]
-              << ")";
+    if (identifier) {
+      LOG(INFO) << "Notification " << action << " (" << [identifier UTF8String]
+                << ")";
+    }
   }
 }
 
